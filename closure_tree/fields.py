@@ -40,8 +40,20 @@ class ClosureManyToManyField(models.ManyToManyField):
             'Meta': meta,
             '__module__': cls.__module__,
             'path': ArrayField(base_field=models.IntegerField(), primary_key=True),
-            'ancestor': models.ForeignKey(cls, related_name='+'),
-            'descendant': models.ForeignKey(cls, related_name='+'),
+            'ancestor': models.ForeignKey(
+                cls,
+                related_name='%s+' % name,
+                db_tablespace=self.db_tablespace,
+                db_constraint=self.remote_field.db_constraint,
+                on_delete=CASCADE,
+            ),
+            'descendant': models.ForeignKey(
+                cls,
+                related_name='%+' % name,
+                db_tablespace=self.db_tablespace,
+                db_constraint=self.remote_field.db_constraint,
+                on_delete=CASCADE,
+            ),
             'depth': models.IntegerField(),
         })
 
