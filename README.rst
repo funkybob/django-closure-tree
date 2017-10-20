@@ -45,6 +45,6 @@ Add the CreateTreeClosure migration step:
        ]
 
        operations = [
-           CreateTreeClosure('Org'),
+           CreateTreeClosure('MyNode'),
        ]
 
