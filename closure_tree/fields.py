@@ -13,7 +13,6 @@ class ClosureManyToManyField(models.ManyToManyField):
         super().__init__(to='self', related_name='ancestors', symmetrical=False, *args, **kwargs)
 
     def contribute_to_class(self, cls, name, **kwargs):
-        print(cls, name, **kwargs)
         if not cls._meta.abstract:
             # Define through table
             to_model = resolve_relation(cls, self.remote_field.model)
