@@ -9,7 +9,7 @@ class ClosureManyToManyField(models.ManyToManyField):
     Pre-configured M2M that defines a 'through' model automatically for the closure table.
     '''
     def __init__(self, *args, **kwargs):
-        super().__init__('self', related_name='children', symmetrical=False, **kwargs)
+        super().__init__('self', related_name='ancestors', symmetrical=False, **kwargs)
 
     def contribute_to_class(self, cls, name, **kwargs):
         if cls._meta.abstract:
@@ -45,4 +45,4 @@ class ClosureManyToManyField(models.ManyToManyField):
             'depth': models.IntegerField(),
         })
 
-        return super(cls, name, **kwargs)
+        super().contribute_to_class(cls, name, **kwargs)
