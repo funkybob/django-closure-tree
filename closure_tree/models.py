@@ -7,7 +7,7 @@ class Node(models.Model):
     node_id = models.AutoField(primary_key=True)
     parent = models.ForeignKey('self', related_name='children', null=True, blank=True)
 
-    descendants = ClosureManyToManyField(related_name='ancestors')
+    descendants = ClosureManyToManyField()
 
     class Meta:
         abstract = True
