@@ -25,7 +25,7 @@ class ClosureManyToManyField(models.ManyToManyField):
         from_ = 'from_%s' % from_
 
         meta = type('Meta', (), {
-            'db_table': self._get_m2m_db_table(cls._meta),
+            'db_table': '%s_closure' % cls._meta.db_table,
             'auto_created': cls,
             'app_label': cls._meta.app_label,
             'db_tablespace': cls._meta.db_tablespace,
@@ -49,7 +49,7 @@ class ClosureManyToManyField(models.ManyToManyField):
             ),
             'descendant': models.ForeignKey(
                 cls,
-                related_name='%+' % name,
+                related_name='%s+' % name,
                 db_tablespace=self.db_tablespace,
                 db_constraint=self.remote_field.db_constraint,
                 on_delete=CASCADE,
