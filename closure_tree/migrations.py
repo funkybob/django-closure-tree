@@ -24,7 +24,7 @@ FROM %(table)s
 INNER JOIN %(table)s_closure ON (ancestor_id = node_id)
 WHERE parent_id IS NOT NULL;
 ''' % {
-    'table': model._meta.db_table
+    'table': schema_editor.connection.ops.quote_name(model._meta.db_table),
 })
 
     def database_backwards(self, app_label, schema_editor, from_state, to_state):
