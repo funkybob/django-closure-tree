@@ -31,7 +31,7 @@ Add the CreateTreeClosure migration step:
 
 .. code-block:: sh
 
-   $ ./manage.py makenigrations --empty myapp
+   $ ./manage.py makemigrations --empty myapp
 
 
 .. code-block:: python
