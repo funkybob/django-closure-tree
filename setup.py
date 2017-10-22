@@ -14,7 +14,7 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'closure_tree'
+NAME = 'django-closure-tree'
 DESCRIPTION = 'A Closure based Tree model for Django.'
 URL = 'https://github.com/funkybob/closure_tree'
 EMAIL = 'curtis@tinbrain.net'
@@ -29,6 +29,8 @@ REQUIRED = [
 # ------------------------------------------------
 # Except, perhaps the License and Trove Classifiers!
 # If you do change the License, remember to change the Trove Classifier for that!
+# MODULE = NAME.replace('-', '_')
+MODULE = 'closure_tree'
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -39,7 +41,7 @@ with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 # Load the package's __version__.py module as a dictionary.
 about = {}
-with open(os.path.join(here, NAME, '__version__.py')) as f:
+with open(os.path.join(here, MODULE, '__version__.py')) as f:
     exec(f.read(), about)
 
 
