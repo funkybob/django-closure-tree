@@ -34,14 +34,14 @@ class ClosureManyToManyField(models.ManyToManyField):
                     related_name='%s+' % name_,
                     db_tablespace=self.db_tablespace,
                     db_constraint=self.remote_field.db_constraint,
-                    on_delete=models.CASCADE,
+                    on_delete=models.DO_NOTHING,
                 ),
                 'descendant': models.ForeignKey(
                     cls,
                     related_name='%s+' % name_,
                     db_tablespace=self.db_tablespace,
                     db_constraint=self.remote_field.db_constraint,
-                    on_delete=models.CASCADE,
+                    on_delete=models.DO_NOTHING,
                 ),
                 'depth': models.IntegerField(),
             })
