@@ -7,7 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 class ClosureManyToManyField(models.ManyToManyField):
     '''
-    Pre-configured M2M that defines a 'through' model automatically for the closure table.
+    Pre-configured M2M that defines a 'through' model automatically for the
+    closure table.
     '''
 
     def contribute_to_class(self, cls, name, **kwargs):
