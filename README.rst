@@ -68,3 +68,18 @@ foreign key.
 
 
 And create a migration (as above).
+
+Multiple self-referential models
+--------------------------------
+
+If you have more than one self-referential relationship, or if you just want to be explicit, you can supply
+the parent field name to the migration operation:
+
+.. code-block:: python
+
+    class Migration(migrations.Migration):
+        # dependencies as above
+
+        operations = [
+            CreateTreeClosure('MyModel', parent_field='parent'),
+        ]
