@@ -39,12 +39,13 @@ class CreateTreeClosure(RunSQL):
     def database_forwards(self, app_label, schema_editor, from_state, to_state):
         quote_name = schema_editor.connection.ops.quote_name
         model = from_state.apps.get_model(app_label, self.model_name)
+        parent_id = self.parent_field or self.get_self_reference(model)
 
         self.sql = VIEW_TEMPLATE.format(
             table=quote_name(model._meta.db_table),
             view=quote_name(model._meta.db_table + '_closure'),
             node_id=quote_name(model._meta.pk.column),
-            parent_id=quote_name(self.parent_field or self.get_self_reference(model))
+            parent_id=quote_name(parent_id)
         )
         super().database_forwards(app_label, schema_editor, from_state, to_state)
 
